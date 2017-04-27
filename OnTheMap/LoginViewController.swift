@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: AnyObject) {
         
         if emailField.text!.isEmpty || passwordField.text!.isEmpty {
-            messageLabel.text = "Username or Password Empty."
+            messageLabel.text = "Please enter an email address and password."
         } else {
             setUIEnabled(false)
             displayMessage("Logging in...")
@@ -84,7 +84,10 @@ class LoginViewController: UIViewController {
                                 let alert = UIAlertController(title: "Login error", message: uError.description, preferredStyle: .actionSheet)
                                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                                 self.present(alert, animated: true)
-                            default: break
+                            default:
+                                let alert = UIAlertController(title: "Communications error", message: uError.description, preferredStyle: .actionSheet)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                                self.present(alert, animated: true)
                             }
                         }
                     }
@@ -106,6 +109,9 @@ class LoginViewController: UIViewController {
                     self.completeLogin()
                 } else {
                     self.displayMessage(error?.description)
+                    let alert = UIAlertController(title: "Error Getting Student Locations", message: error?.description, preferredStyle: .actionSheet)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
                 }
             }
         }
@@ -167,14 +173,12 @@ extension LoginViewController: UITextFieldDelegate {
     func keyboardWillShow(_ notification: Notification) {
         if !keyboardOnScreen {
             view.frame.origin.y -= keyboardHeight(notification)
-           // movieImageView.isHidden = true
         }
     }
     
     func keyboardWillHide(_ notification: Notification) {
         if keyboardOnScreen {
             view.frame.origin.y += keyboardHeight(notification)
-           // movieImageView.isHidden = false
         }
     }
     
@@ -187,9 +191,9 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     private func keyboardHeight(_ notification: Notification) -> CGFloat {
-        let userInfo = (notification as NSNotification).userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
+       let userInfo = (notification as NSNotification).userInfo
+       let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+       return keyboardSize.cgRectValue.height / 2
     }
     
     private func resignIfFirstResponder(_ textField: UITextField) {
