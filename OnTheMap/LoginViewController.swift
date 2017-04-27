@@ -81,13 +81,9 @@ class LoginViewController: UIViewController {
                         if let uError = error {
                             switch uError {
                             case UdacityClient.UdacityClientError.invalidIdOrPassword:
-                                let alert = UIAlertController(title: "Login error", message: uError.description, preferredStyle: .actionSheet)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                                self.present(alert, animated: true)
+                                self.alert(title: "Login error", message: uError.description)
                             default:
-                                let alert = UIAlertController(title: "Communications error", message: uError.description, preferredStyle: .actionSheet)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                                self.present(alert, animated: true)
+                                self.alert(title: "Communications error", message: uError.description)
                             }
                         }
                     }
@@ -109,9 +105,7 @@ class LoginViewController: UIViewController {
                     self.completeLogin()
                 } else {
                     self.displayMessage(error?.description)
-                    let alert = UIAlertController(title: "Error Getting Student Locations", message: error?.description, preferredStyle: .actionSheet)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)
+                    self.alert(title: "Error Getting Student Locations", message: error?.description)
                 }
             }
         }

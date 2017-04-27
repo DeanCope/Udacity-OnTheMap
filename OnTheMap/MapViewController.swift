@@ -57,14 +57,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.mapView.removeAnnotations(self.mapView.annotations)
                     self.displayAnnotationsOnMap()
                 } else {
-                    let alert = UIAlertController(title: "Refresh error", message: error?.description, preferredStyle: .actionSheet)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)                }
+                    self.alert(title: "Refresh error", message: error?.description)
+                }
             }
         }
     }
     
     @IBAction func logout(_ sender: Any) {
+        // The udacity session was already deleted as part of the ParseClient (ParseConvenience).authenticate function, so there is no real "logout" needed here.
         StudentDataSource.sharedInstance.reset()
         dismiss(animated: true, completion: nil)
     }
@@ -104,15 +104,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        var message: String?
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!)
+            if let urlString = view.annotation?.subtitle! {
+                if let url = URL(string: urlString) {
+                    let app = UIApplication.shared
+                    if app.canOpenURL(url) {
+                        app.open(url)
+                    } else {
+                        message = "URL cannot be opened: \(urlString)"
+                    }
+                } else {
+                    message = "URL cannot be used: \(urlString)"
+                }
+            } else {
+                message = "There is no URL for this student location"
             }
+            if let message = message {
+                alert(title: "URL Error", message: message)
+            } 
         }
     }
-    
-
-    
 
 }

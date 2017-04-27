@@ -26,22 +26,32 @@ class FindLocationViewController: UIViewController {
         //locationText.text = "Stamford, CT"
         
         setUIEnabled(false)
-        let currentUser = UdacityClient.sharedInstance().currentUser!
+        guard let currentUser = UdacityClient.sharedInstance().currentUser else {
+            alert(message: "Current user was not set")
+            return
+        }
         
         // Call ParseClient to see if user already has a location
         ParseClient.sharedInstance().getStudentInformation(currentUser.userKey!) { (success, information, error) in
             performUIUpdatesOnMain {
                 self.setUIEnabled(true)
                 if success {
+                    guard let information = information else {
+                        self.alert(message: "Student information was not returned")
+                        return
+                    }
                     self.student = information
+                    guard let location = information.location else {
+                        return
+                    }
                     var text = "You already have a location"
-                    if let loc = information!.location!.mapString {
+                    if let loc = location.mapString {
                         text = text + " named \(loc)"
                     }
                     text = text + ".  If you proceed, it will be replaced by the new location."
-                    self.displayAlert(titleString: "Warning", messageString: text)
+                    self.alert(title: "Warning", message: text)
                 } else {
-                    self.displayAlert(titleString: "Error", messageString: error?.localizedDescription)
+                    self.alert(message: error?.localizedDescription)
                 }
             }
         }
@@ -59,7 +69,7 @@ class FindLocationViewController: UIViewController {
                 } else {
                     // else display alert:
                     // Location not found, try again
-                    self.displayAlert(titleString: "Error", messageString: errorString)
+                    self.alert(message: errorString)
                 }
             }
         }
@@ -84,12 +94,6 @@ class FindLocationViewController: UIViewController {
                 completionHandlerForFindLocation(false, "Location could not be found")
             }
         }
-    }
-    // display an error if something goes wrong
-    func displayAlert(titleString: String, messageString: String?) {
-        let alertController = UIAlertController(title: titleString, message: messageString, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

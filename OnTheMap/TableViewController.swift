@@ -33,14 +33,14 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
                     self.studentLocations = StudentDataSource.sharedInstance.students
                     self.tableView.reloadData()
                 } else {
-                    let alert = UIAlertController(title: "Refresh error", message: error?.description, preferredStyle: .actionSheet)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)                }
+                    self.alert(title: "Refresh error", message: error?.description)
+                }
             }
         }
     }
     
     @IBAction func logout(_ sender: Any) {
+    // The udacity session was already deleted as part of the ParseClient (ParseConvenience).authenticate function, so there is no real "logout" needed here.
         StudentDataSource.sharedInstance.reset()
         dismiss(animated: true, completion: nil)
     }
@@ -80,8 +80,26 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = studentLocations[indexPath.row].location!.mediaURL
-        UIApplication.shared.open(URL(string: url)!)
+        var message: String?
+        if let urlString = studentLocations[indexPath.row].location?.mediaURL {
+            if let url = URL(string: urlString) {
+                let app = UIApplication.shared
+                if app.canOpenURL(url) {
+                    app.open(url)
+                } else {
+                    message = "URL cannot be opened: \(urlString)"
+                }
+            } else {
+                message = "URL cannot be used: \(urlString)"
+            }
+        } else {
+            message = "There is no URL for this student location"
+        }
+        if let message = message {
+            alert(title: "URL Error", message: message)
+        } else {
+            // Only deselect the row if there was no error
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
-
 }

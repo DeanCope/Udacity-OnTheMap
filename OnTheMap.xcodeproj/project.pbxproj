@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA10FC8A1EAEA0A2008214AD /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA10FC891EAEA0A2008214AD /* StudentLocation.swift */; };
 		DA4EB7B71EB2613800FAF1D0 /* StudentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4EB7B61EB2613800FAF1D0 /* StudentDataSource.swift */; };
+		DA4EB7B91EB2718F00FAF1D0 /* DisplayAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4EB7B81EB2718F00FAF1D0 /* DisplayAlert.swift */; };
 		DA69E82E1E96BCA4009450BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69E82D1E96BCA4009450BC /* AppDelegate.swift */; };
 		DA69E8331E96BCA4009450BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA69E8311E96BCA4009450BC /* Main.storyboard */; };
 		DA69E8351E96BCA4009450BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA69E8341E96BCA4009450BC /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		DA10FC891EAEA0A2008214AD /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		DA4EB7B61EB2613800FAF1D0 /* StudentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDataSource.swift; sourceTree = "<group>"; };
+		DA4EB7B81EB2718F00FAF1D0 /* DisplayAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayAlert.swift; sourceTree = "<group>"; };
 		DA69E82A1E96BCA4009450BC /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA69E82D1E96BCA4009450BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA69E8321E96BCA4009450BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				DAD062111EA268C700F670B8 /* TableViewController.swift */,
 				DAD062131EA7A14B00F670B8 /* FindLocationViewController.swift */,
 				DAD062151EA7A54000F670B8 /* PostLocationViewController.swift */,
+				DA4EB7B81EB2718F00FAF1D0 /* DisplayAlert.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				DA10FC8A1EAEA0A2008214AD /* StudentLocation.swift in Sources */,
 				DA69E8491E96FCD4009450BC /* LoginViewController.swift in Sources */,
 				DAD0620E1E9E982400F670B8 /* ParseConvenience.swift in Sources */,
+				DA4EB7B91EB2718F00FAF1D0 /* DisplayAlert.swift in Sources */,
 				DAD062121EA268C700F670B8 /* TableViewController.swift in Sources */,
 				DA69E8521E96FCFC009450BC /* UdacityClient.swift in Sources */,
 				DA69E8531E96FCFC009450BC /* UdacityConstants.swift in Sources */,

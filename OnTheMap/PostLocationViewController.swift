@@ -61,7 +61,7 @@ class PostLocationViewController: UIViewController, MKMapViewDelegate {
         // POST (if new) or PUT (if replace) pin location
         
         guard let urlString = urlText.text, let _ = URL(string: urlString) else {
-            displayAlert(titleString: "Error", messageString: "Enter a valid URL")
+            alert(message: "Enter a valid URL")
             return
         }
         
@@ -80,7 +80,7 @@ class PostLocationViewController: UIViewController, MKMapViewDelegate {
                 if success {
                     self.displaySuccess(titleString: "Success", messageString: "Your new location was posted")
                 } else {
-                    self.displayAlert(titleString: "Error", messageString: error?.description)
+                    self.alert(message: error?.description)
                 }
             }
         }
@@ -90,12 +90,6 @@ class PostLocationViewController: UIViewController, MKMapViewDelegate {
         presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    // display an alert
-    func displayAlert(titleString: String, messageString: String?) {
-        let alertController = UIAlertController(title: titleString, message: messageString, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
     
     // display success
     func displaySuccess(titleString: String, messageString: String?) {
