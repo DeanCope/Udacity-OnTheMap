@@ -20,7 +20,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         override func viewDidLoad() {
         super.viewDidLoad()
             
-        studentLocations = ParseClient.sharedInstance().students
+        studentLocations = StudentDataSource.sharedInstance.students
 
     }
 
@@ -30,7 +30,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             performUIUpdatesOnMain {
                 self.setUIEnabled(true)
                 if success {
-                    self.studentLocations = ParseClient.sharedInstance().students
+                    self.studentLocations = StudentDataSource.sharedInstance.students
                     self.tableView.reloadData()
                 } else {
                     let alert = UIAlertController(title: "Refresh error", message: error?.description, preferredStyle: .actionSheet)
@@ -41,7 +41,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func logout(_ sender: Any) {
-        ParseClient.sharedInstance().reset()
+        StudentDataSource.sharedInstance.reset()
         dismiss(animated: true, completion: nil)
     }
     

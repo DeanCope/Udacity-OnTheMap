@@ -24,7 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private func displayAnnotationsOnMap() {
         var annotations = [MKPointAnnotation]()
         
-        let studentLocations = ParseClient.sharedInstance().students
+        let studentLocations = StudentDataSource.sharedInstance.students
         
         for studentInformation in studentLocations {
             
@@ -65,7 +65,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logout(_ sender: Any) {
-        ParseClient.sharedInstance().reset()
+        StudentDataSource.sharedInstance.reset()
         dismiss(animated: true, completion: nil)
     }
     

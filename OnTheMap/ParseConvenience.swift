@@ -30,7 +30,7 @@ extension ParseClient {
                 completionHandlerForStudentLocations(false, error)
             } else {
                 if let results = results?[ParseClient.JSONResponseKeys.Results] as? [[String:AnyObject]] {
-                    self.students = StudentInformation.studentsFromResults(results)
+                    StudentDataSource.sharedInstance.students = StudentInformation.studentsFromResults(results)
                     completionHandlerForStudentLocations(true, nil)
                 } else {
                     completionHandlerForStudentLocations(false, .parseFailed(detail: "Could not parse getStudentLocations"))

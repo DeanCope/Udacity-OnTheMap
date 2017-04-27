@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA10FC8A1EAEA0A2008214AD /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA10FC891EAEA0A2008214AD /* StudentLocation.swift */; };
+		DA4EB7B71EB2613800FAF1D0 /* StudentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4EB7B61EB2613800FAF1D0 /* StudentDataSource.swift */; };
 		DA69E82E1E96BCA4009450BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69E82D1E96BCA4009450BC /* AppDelegate.swift */; };
 		DA69E8331E96BCA4009450BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA69E8311E96BCA4009450BC /* Main.storyboard */; };
 		DA69E8351E96BCA4009450BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA69E8341E96BCA4009450BC /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		DA10FC891EAEA0A2008214AD /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		DA4EB7B61EB2613800FAF1D0 /* StudentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDataSource.swift; sourceTree = "<group>"; };
 		DA69E82A1E96BCA4009450BC /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA69E82D1E96BCA4009450BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA69E8321E96BCA4009450BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		DAD062081E9E5F3000F670B8 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				DA4EB7B61EB2613800FAF1D0 /* StudentDataSource.swift */,
 				DAD062061E9E5CF000F670B8 /* StudentInformation.swift */,
 				DA10FC891EAEA0A2008214AD /* StudentLocation.swift */,
 				DAD062091E9E5F8D00F670B8 /* ParseConstants.swift */,
@@ -261,6 +264,7 @@
 				DAD062121EA268C700F670B8 /* TableViewController.swift in Sources */,
 				DA69E8521E96FCFC009450BC /* UdacityClient.swift in Sources */,
 				DA69E8531E96FCFC009450BC /* UdacityConstants.swift in Sources */,
+				DA4EB7B71EB2613800FAF1D0 /* StudentDataSource.swift in Sources */,
 				DAD0620A1E9E5F8D00F670B8 /* ParseConstants.swift in Sources */,
 				DAD062141EA7A14B00F670B8 /* FindLocationViewController.swift in Sources */,
 				DA69E8401E96FB5F009450BC /* GCDBlackBox.swift in Sources */,

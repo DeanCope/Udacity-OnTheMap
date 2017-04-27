@@ -16,7 +16,6 @@ class ParseClient : NSObject {
     
     // shared session
     var session = URLSession.shared
-    var students = [StudentInformation]()
     
     // MARK: Initializers
     
@@ -24,9 +23,6 @@ class ParseClient : NSObject {
         super.init()
     }
     
-    func reset() {
-        students = [StudentInformation]()
-    }
     
     // MARK: GET
     
